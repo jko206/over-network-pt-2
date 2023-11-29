@@ -58,12 +58,7 @@ export default function LoginWindow({
           >
             Create Account
           </button>
-          <p className='text-red-500'>
-            {/* 
-              TODO #2: Display the error message if it is not an empty string using the error state variable
-            */}
-            {'PLACEHOLDER'}
-          </p>
+          <p className='text-red-500'>{!!error && error}</p>
         </div>
       </div>
     </form>
