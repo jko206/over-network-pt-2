@@ -16,9 +16,7 @@ export default function LoginWindow({
     @param form - FormData object containing the username and name of the new user
   */
   const onSubmit = async (form: FormData) => {
-    /* 
-      TODO #3: Set the error state to an empty string
-    */
+    setError('');
     /* 
       TODO #4: Set up a try catch block to call the setUpProfile() function and set the error state
       if an error is thrown
