@@ -67,17 +67,13 @@ export default async function RootLayout({
     };
     storeUser(newUser);
 
-    /* 
-      TODO #4: Set up a try catch block to create the user's profile and log them in if successful.
-
-      HINT: 
-        - Use the createProfile() and login() functions to create the user's 
-          profile and log them in
-        
-        - In the catch block, use the dropUser() function to remove the user 
-          from the local account cache. Then, throw the error to be caught by the catch block in
-          the loginWindow.tsx file.
-    */
+    try {
+      await createProfile(newUser);
+      await login(newUser);
+    } catch (error: any) {
+      dropUser(newUser);
+      throw error;
+    }
   };
 
   if (!me) {
