@@ -65,11 +65,7 @@ export default async function RootLayout({
       followers: 0,
       following: 0,
     };
-    /* 
-      TODO #3: Store the user in the local account cache
-
-      HINT: Use the storeUser() function to store the user
-    */
+    storeUser(newUser);
 
     /* 
       TODO #4: Set up a try catch block to create the user's profile and log them in if successful.
