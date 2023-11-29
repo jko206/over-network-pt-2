@@ -9,6 +9,7 @@ import { newUserSchema } from '@/lib/zod';
 import { dropUser, getNumberOfUsers, storeUser } from '@/lib/storage';
 import { createProfile, newPrivateKey } from '@/lib/contract';
 import LoginWindow from './loginWindow';
+import { User } from '@/lib/types';
 
 const inter = Inter({ subsets: ['latin'] });
 
@@ -56,14 +57,14 @@ export default async function RootLayout({
   const setUpProfile = async (form: FormData) => {
     'use server';
 
-    /*
-      TODO #2: Create the new User object with a username, name, and privateKey
-    
-      HINT: 
-        - 
-        - Use the newPrivateKey() function to generate a new private key for the user
-    */
-
+    const privateKey = newPrivateKey();
+    const newUser: User = {
+      username: form.get('username') as string,
+      name: form.get('name') as string,
+      privateKey,
+      followers: 0,
+      following: 0,
+    };
     /* 
       TODO #3: Store the user in the local account cache
 
