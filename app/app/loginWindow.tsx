@@ -17,14 +17,12 @@ export default function LoginWindow({
   */
   const onSubmit = async (form: FormData) => {
     setError('');
-    /* 
-      TODO #4: Set up a try catch block to call the setUpProfile() function and set the error state
-      if an error is thrown
 
-      HINT: 
-        - Use the setUpProfile() function to set up the user's profile and log them in
-        - In the catch block, set the error state to the error message (error.message)
-    */
+    try {
+      await setUpProfile(form);
+    } catch (error: any) {
+      setError(error.message);
+    }
   };
 
   return (
